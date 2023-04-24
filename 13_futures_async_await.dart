@@ -11,9 +11,13 @@ void main() async {
   try {
     final response = await mockHttpRequest(url: 'test', delay: 3);
     print(
-        'Got success value using async/await: $response'); // this is going to be printed always BEFORE "End of the program"
+        'Success using async/await: $response'); // this is going to be printed always BEFORE "End of the program"
+  } on Exception catch (err) {
+    print('We got an exception : $err');
   } catch (err) {
     print('Caught an error using asyc/await : $err');
+  } finally {
+    print('Will execute this after try or catch');
   }
 
   print('End of the program');
